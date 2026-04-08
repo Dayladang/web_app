@@ -1,16 +1,7 @@
 import React from 'react';
 import ProductCard from '../components/ui/ProductCard';
+import { MOCK_PRODUCTS } from '../data/products';
 import './Home.css';
-
-// Mock data using the E-commerce Use Cases
-const MOCK_PRODUCTS = [
-  { id: 1, name: 'Wireless Noise-Canceling Headphones', price: 299.99, color: '#aa3bff' },
-  { id: 2, name: 'Minimalist Mechanical Keyboard', price: 149.50, color: '#3b82f6' },
-  { id: 3, name: 'Ultra-wide 4K Monitor', price: 699.00, color: '#f43f5e' },
-  { id: 4, name: 'Ergonomic Office Chair', price: 450.00, color: '#10b981' },
-  { id: 5, name: 'Smart Home Security Camera', price: 199.99, color: '#f59e0b' },
-  { id: 6, name: 'Professional DSLR Lens', price: 1200.00, color: '#8b5cf6' },
-];
 
 const Home = () => {
   return (
@@ -27,7 +18,7 @@ const Home = () => {
       <section className="product-section container">
         <div className="section-header flex-between">
           <h2 className="text-h2">Featured Products</h2>
-          <a href="#" className="view-all-link">View All →</a>
+          <span className="view-all-link">View All →</span>
         </div>
         
         <div className="product-grid">
