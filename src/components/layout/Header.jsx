@@ -6,9 +6,9 @@ const Header = () => {
     <header className="header glass">
       <div className="container header-container">
         <div className="logo">
-          <span className="logo-accent">Nexus</span>Store
+          <span className="logo-accent">Dang's </span>Store
         </div>
-        
+
         <div className="search-bar">
           <input type="text" placeholder="Search products, brands and categories..." />
           <button className="search-btn">
@@ -18,10 +18,10 @@ const Header = () => {
 
         <nav className="header-nav">
           <button className="nav-icon-btn">
-             👤
+            👤
           </button>
           <button className="nav-icon-btn cart-btn">
-             🛒 <span className="cart-badge">3</span>
+            🛒 <span className="cart-badge">3</span>
           </button>
         </nav>
       </div>
