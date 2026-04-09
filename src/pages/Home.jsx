@@ -18,7 +18,7 @@ const Home = () => {
       <section className="product-section container">
         <div className="section-header flex-between">
           <h2 className="text-h2">Featured Products</h2>
-          <a href="#" className="view-all-link">View All →</a>
+          <span className="view-all-link">View All →</span>
         </div>
         
         <div className="product-grid">
