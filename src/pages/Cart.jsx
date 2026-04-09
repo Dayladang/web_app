@@ -1,31 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { useCart } from '../context/CartContext';
 import './Cart.css';
 
-const Cart = ({ cartItems, setCartItems, setCurrentPage }) => {
-  const toggleSelection = (id) => {
-    setCartItems(cartItems.map(item => 
-      item.id === id ? { ...item, selected: !item.selected } : item
-    ));
-  };
-
-  const toggleSelectAll = (e) => {
-    const isChecked = e.target.checked;
-    setCartItems(cartItems.map(item => ({ ...item, selected: isChecked })));
-  };
-
-  const updateQuantity = (id, delta) => {
-    setCartItems(cartItems.map(item => {
-      if (item.id === id) {
-        const newQuantity = Math.max(1, item.quantity + delta); // Prevent quantity < 1
-        return { ...item, quantity: newQuantity };
-      }
-      return item;
-    }));
-  };
-
-  const removeItem = (id) => {
-    setCartItems(cartItems.filter(item => item.id !== id));
-  };
+const Cart = () => {
+  const { cartItems, updateQuantity, removeItem, toggleSelection, toggleSelectAll } = useCart();
 
   // Calculations
   const selectedItems = cartItems.filter(item => item.selected);
@@ -40,9 +19,9 @@ const Cart = ({ cartItems, setCartItems, setCurrentPage }) => {
       <main className="cart-page container animate-fade-in empty-cart">
         <h1 className="text-h2">Your Cart is Empty</h1>
         <p className="text-body mt-2">Looks like you haven't added anything yet.</p>
-        <button className="base-btn btn-primary mt-4" onClick={() => setCurrentPage('home')}>
+        <Link to="/" className="base-btn btn-primary mt-4" style={{ textDecoration: 'none', display: 'inline-block' }}>
           Continue Shopping
-        </button>
+        </Link>
       </main>
     );
   }
@@ -51,9 +30,9 @@ const Cart = ({ cartItems, setCartItems, setCurrentPage }) => {
     <main className="cart-page container animate-fade-in">
       <div className="cart-header">
         <h1 className="text-h2">Shopping Cart</h1>
-        <button className="cart-back-btn" onClick={() => setCurrentPage('home')}>
+        <Link to="/" className="cart-back-btn" style={{ textDecoration: 'none' }}>
           ← Back to Shop
-        </button>
+        </Link>
       </div>
 
       <div className="cart-layout">
@@ -64,7 +43,7 @@ const Cart = ({ cartItems, setCartItems, setCurrentPage }) => {
               <input 
                 type="checkbox" 
                 checked={allSelected} 
-                onChange={toggleSelectAll} 
+                onChange={(e) => toggleSelectAll(e.target.checked)} 
               />
               <span className="checkmark"></span>
               <strong>Select All ({cartItems.length} items)</strong>

@@ -1,18 +1,9 @@
 import React from 'react';
 import ProductCard from '../components/ui/ProductCard';
+import { MOCK_PRODUCTS } from '../data/products';
 import './Home.css';
 
-// Mock data using the E-commerce Use Cases
-const MOCK_PRODUCTS = [
-  { id: 1, name: 'Wireless Noise-Canceling Headphones', price: 299.99, color: '#aa3bff' },
-  { id: 2, name: 'Minimalist Mechanical Keyboard', price: 149.50, color: '#3b82f6' },
-  { id: 3, name: 'Ultra-wide 4K Monitor', price: 699.00, color: '#f43f5e' },
-  { id: 4, name: 'Ergonomic Office Chair', price: 450.00, color: '#10b981' },
-  { id: 5, name: 'Smart Home Security Camera', price: 199.99, color: '#f59e0b' },
-  { id: 6, name: 'Professional DSLR Lens', price: 1200.00, color: '#8b5cf6' },
-];
-
-const Home = ({ addToCart }) => {
+const Home = () => {
   return (
     <main className="home-page animate-fade-in">
       <section className="hero container">
@@ -32,7 +23,7 @@ const Home = ({ addToCart }) => {
         
         <div className="product-grid">
           {MOCK_PRODUCTS.map(product => (
-            <ProductCard key={product.id} product={product} addToCart={addToCart} />
+            <ProductCard key={product.id} product={product} />
           ))}
         </div>
       </section>

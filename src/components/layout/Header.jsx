@@ -1,17 +1,17 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { useCart } from '../../context/CartContext';
 import './Header.css';
 
-const Header = ({ setCurrentPage, cartItemCount = 0 }) => {
+const Header = () => {
+  const { cartCount } = useCart();
+
   return (
     <header className="header glass">
       <div className="container header-container">
-        <div 
-          className="logo" 
-          onClick={() => setCurrentPage('home')}
-          style={{ cursor: 'pointer' }}
-        >
+        <Link to="/" className="logo" style={{ textDecoration: 'none', color: 'inherit' }}>
           <span className="logo-accent">Dang's </span>Store
-        </div>
+        </Link>
 
         <div className="search-bar">
           <input type="text" placeholder="Search products, brands and categories..." />
@@ -24,12 +24,9 @@ const Header = ({ setCurrentPage, cartItemCount = 0 }) => {
           <button className="nav-icon-btn">
             👤
           </button>
-          <button 
-            className="nav-icon-btn cart-btn"
-            onClick={() => setCurrentPage('cart')}
-          >
-            🛒 {cartItemCount > 0 && <span className="cart-badge">{cartItemCount}</span>}
-          </button>
+          <Link to="/cart" className="nav-icon-btn cart-btn" style={{ textDecoration: 'none', color: 'inherit' }}>
+            🛒 {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
+          </Link>
         </nav>
       </div>
     </header>

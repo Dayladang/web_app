@@ -1,0 +1,133 @@
+.product-detail-page {
+  padding: 3rem 0;
+  min-height: calc(100vh - 80px);
+}
+
+.detail-navigation {
+  margin-bottom: 2rem;
+}
+
+.back-link {
+  color: var(--text-color);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color var(--transition-bounce);
+}
+
+.back-link:hover {
+  color: var(--primary-color);
+}
+
+.detail-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+
+@media (min-width: 900px) {
+  .detail-layout {
+    grid-template-columns: 1fr 1fr;
+    align-items: flex-start;
+  }
+}
+
+.detail-image-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem;
+  border-radius: 20px;
+  min-height: 400px;
+}
+
+.detail-img-placeholder {
+  width: 100%;
+  max-width: 300px;
+  aspect-ratio: 1;
+  border-radius: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 5rem;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+}
+
+.detail-info-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.detail-category {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.detail-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.detail-price {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--text-color);
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.section-label {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.detail-description {
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+  color: #d4d4d8;
+}
+
+.detail-actions {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.add-detail-btn {
+  flex: 1;
+  padding: 1.25rem;
+  font-size: 1.1rem;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.detail-perks {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.perk-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: #a1a1aa;
+  font-size: 0.95rem;
+}
+
+.perk-item span {
+  font-size: 1.25rem;
+}
