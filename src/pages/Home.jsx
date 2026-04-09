@@ -12,7 +12,7 @@ const MOCK_PRODUCTS = [
   { id: 6, name: 'Professional DSLR Lens', price: 1200.00, color: '#8b5cf6' },
 ];
 
-const Home = () => {
+const Home = ({ addToCart }) => {
   return (
     <main className="home-page animate-fade-in">
       <section className="hero container">
@@ -32,7 +32,7 @@ const Home = () => {
         
         <div className="product-grid">
           {MOCK_PRODUCTS.map(product => (
-            <ProductCard key={product.id} product={product} />
+            <ProductCard key={product.id} product={product} addToCart={addToCart} />
           ))}
         </div>
       </section>

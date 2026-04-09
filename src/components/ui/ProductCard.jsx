@@ -2,7 +2,7 @@ import React from 'react';
 import './ProductCard.css';
 import Button from './Button';
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, addToCart }) => {
   return (
     <div className="product-card glass">
       <div className="product-image-container">
@@ -14,7 +14,13 @@ const ProductCard = ({ product }) => {
       <div className="product-info">
         <h3 className="product-title">{product.name}</h3>
         <p className="product-price">${product.price.toFixed(2)}</p>
-        <Button variant="primary" className="add-to-cart-btn">Add to Cart</Button>
+        <Button 
+          variant="primary" 
+          className="add-to-cart-btn" 
+          onClick={() => addToCart && addToCart(product)}
+        >
+          Add to Cart
+        </Button>
       </div>
     </div>
   );

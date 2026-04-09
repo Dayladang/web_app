@@ -1,11 +1,15 @@
 import React from 'react';
 import './Header.css';
 
-const Header = () => {
+const Header = ({ setCurrentPage, cartItemCount = 0 }) => {
   return (
     <header className="header glass">
       <div className="container header-container">
-        <div className="logo">
+        <div 
+          className="logo" 
+          onClick={() => setCurrentPage('home')}
+          style={{ cursor: 'pointer' }}
+        >
           <span className="logo-accent">Dang's </span>Store
         </div>
 
@@ -20,8 +24,11 @@ const Header = () => {
           <button className="nav-icon-btn">
             👤
           </button>
-          <button className="nav-icon-btn cart-btn">
-            🛒 <span className="cart-badge">3</span>
+          <button 
+            className="nav-icon-btn cart-btn"
+            onClick={() => setCurrentPage('cart')}
+          >
+            🛒 {cartItemCount > 0 && <span className="cart-badge">{cartItemCount}</span>}
           </button>
         </nav>
       </div>
