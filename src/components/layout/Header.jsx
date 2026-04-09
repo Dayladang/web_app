@@ -9,7 +9,7 @@ const Header = () => {
   return (
     <header className="header glass">
       <div className="container header-container">
-        <Link to="/" className="logo" style={{ textDecoration: 'none' }}>
+        <Link to="/" className="logo" style={{ textDecoration: 'none', color: 'inherit' }}>
           <span className="logo-accent">Dang's </span>Store
         </Link>
 
@@ -24,9 +24,9 @@ const Header = () => {
           <button className="nav-icon-btn">
             👤
           </button>
-          <button className="nav-icon-btn cart-btn">
+          <Link to="/cart" className="nav-icon-btn cart-btn" style={{ textDecoration: 'none', color: 'inherit' }}>
             🛒 {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
-          </button>
+          </Link>
         </nav>
       </div>
     </header>

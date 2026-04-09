@@ -6,7 +6,6 @@ const ProductCard = ({ product }) => {
   return (
     <Link to={`/product/${product.id}`} className="product-card glass" style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}>
       <div className="product-image-container">
-        {/* Placeholder for the image */}
         <div className="img-placeholder" style={{ backgroundColor: product.color || '#3b82f6' }}>
            <span className="img-icon">📦</span>
         </div>

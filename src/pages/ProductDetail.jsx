@@ -1,64 +1,77 @@
-import React, { useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useParams, Link } from 'react-router-dom';
 import { MOCK_PRODUCTS } from '../data/products';
 import { useCart } from '../context/CartContext';
-import Button from '../components/ui/Button';
 import './ProductDetail.css';
 
 const ProductDetail = () => {
   const { id } = useParams();
-  const navigate = useNavigate();
   const { addToCart } = useCart();
-
-  const product = MOCK_PRODUCTS.find(p => p.id === parseInt(id));
+  const [product, setProduct] = useState(null);
 
   useEffect(() => {
-    window.scrollTo(0, 0); // Scroll to top when loading
-  }, []);
+    // Mimic API fetch based on ID logic
+    const foundProduct = MOCK_PRODUCTS.find(p => p.id === parseInt(id));
+    setProduct(foundProduct);
+  }, [id]);
 
   if (!product) {
     return (
-      <div className="product-detail-page container">
-        <h2>Product not found!</h2>
-        <Button onClick={() => navigate(-1)}>Go Back</Button>
+      <div className="container" style={{ padding: '4rem 0', textAlign: 'center' }}>
+        <h2>Product Not Found</h2>
+        <Link to="/" className="back-link">Return to Home</Link>
       </div>
     );
   }
 
-  const handleAddToCart = () => {
-    addToCart(product);
-  };
-
   return (
-    <div className="product-detail-page container animate-fade-in">
-      <button className="back-btn" onClick={() => navigate(-1)}>
-        &larr; Back to Products
-      </button>
-
-      <div className="product-detail-content glass">
-        <div className="product-detail-image" style={{ backgroundColor: product.color }}>
-          <span className="img-icon-large">📦</span>
-        </div>
-        
-        <div className="product-detail-info">
-          <h1 className="text-h2">{product.name}</h1>
-          <p className="product-detail-price">${product.price.toFixed(2)}</p>
-          
-          <div className="divider"></div>
-          
-          <div className="product-detail-description">
-            <h3>Description</h3>
-            <p className="text-body">{product.description}</p>
-          </div>
-
-          <div className="product-detail-actions">
-            <Button variant="primary" className="add-to-cart-large" onClick={handleAddToCart}>
-              Add to Cart
-            </Button>
-          </div>
-        </div>
+    <main className="product-detail-page container animate-fade-in">
+      <div className="detail-navigation">
+        <Link to="/" className="back-link">← Back to Products</Link>
       </div>
-    </div>
+
+      <section className="detail-layout">
+        {/* Left: Product Image */}
+        <div className="detail-image-section glass">
+          <div className="detail-img-placeholder" style={{ backgroundColor: product.color }}>
+            <span className="detail-img-icon">📦</span>
+          </div>
+        </div>
+
+        {/* Right: Product Info */}
+        <div className="detail-info-section">
+          <span className="detail-category">{product.category || 'Premium Gear'}</span>
+          <h1 className="detail-title">{product.name}</h1>
+          <p className="detail-price">${product.price.toFixed(2)}</p>
+
+          <div className="detail-description">
+            <h3 className="section-label">Product Description</h3>
+            <p>{product.description}</p>
+          </div>
+
+          <div className="detail-actions">
+            <button 
+              className="base-btn btn-primary add-detail-btn"
+              onClick={() => addToCart(product)}
+            >
+              Add to Cart
+            </button>
+          </div>
+          
+          <div className="detail-perks">
+            <div className="perk-item">
+              <span>🚚</span> Free shipping over $500
+            </div>
+            <div className="perk-item">
+              <span>🛡️</span> 1-Year Warranty
+            </div>
+            <div className="perk-item">
+              <span>🔄</span> 30-Day Returns
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
   );
 };
 
