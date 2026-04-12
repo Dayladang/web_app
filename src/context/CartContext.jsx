@@ -49,11 +49,15 @@ export const CartProvider = ({ children }) => {
     setCartItems(prevItems => prevItems.map(item => ({ ...item, selected: isChecked })));
   };
 
+  const clearSelectedItems = () => {
+    setCartItems(prevItems => prevItems.filter(item => !item.selected));
+  };
+
   const cartCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
     <CartContext.Provider value={{
-      cartItems, addToCart, removeItem, updateQuantity, toggleSelection, toggleSelectAll, cartCount
+      cartItems, addToCart, removeItem, updateQuantity, toggleSelection, toggleSelectAll, clearSelectedItems, cartCount
     }}>
       {children}
     </CartContext.Provider>
