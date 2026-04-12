@@ -1,10 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import './Cart.css';
 
 const Cart = () => {
   const { cartItems, updateQuantity, removeItem, toggleSelection, toggleSelectAll } = useCart();
+  const navigate = useNavigate();
 
   // Calculations
   const selectedItems = cartItems.filter(item => item.selected);
@@ -124,7 +125,7 @@ const Cart = () => {
           <button 
             className="base-btn btn-primary checkout-btn" 
             disabled={selectedItems.length === 0}
-            onClick={() => alert(`Proceeding to checkout with $${total.toFixed(2)}`)}
+            onClick={() => navigate('/checkout')}
           >
             Proceed to Checkout
           </button>
